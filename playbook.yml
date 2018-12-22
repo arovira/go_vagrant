@@ -1,0 +1,27 @@
+#default ansible_host=127.0.0.1 ansible_port=2200 ansible_user='vagrant' ansible_ssh_private_key_file='/Users/arnaurovira/.vagrant.d/insecure_private_key'
+
+- name: Install Go Server 
+  hosts: all
+  become: yes
+  tasks:
+
+  - name: Add repository
+    yum_repository:
+      name:  gocd
+      description:  GoCD YUM Repository
+      baseurl:   https://download.gocd.io
+      enabled:   1
+      gpgcheck:  1
+      gpgkey:    https://download.gocd.io/GOCD-GPG-KEY.asc
+      state: present
+
+  - name: Ensure /var/go folder exists
+    file: path=/var/go state=directory
+
+  - name: Install Go-server and JDK
+    yum: 
+      name: ['java-1.8.0-openjdk','go-server']  
+      state: latest
+
+  - name: Ensure that Go-server starts at startup and is started
+    service: name=go-server enabled=yes state=started 
