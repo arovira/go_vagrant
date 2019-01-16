@@ -1,0 +1,24 @@
+#ci.gocd.yaml
+format_version: 3
+pipelines:
+  test1: # definition of test1 pipeline
+    lock_behavior: none
+    materials:
+      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: https://github.com/arovira/go_vagrant
+        branch: master
+    stages: # list of stages in order
+      - build: # name of stage
+          clean_workspace: true
+          jobs:
+            job1: # name of the job
+              tasks: # ordered list of tasks to execute in job csharp
+               - fetch:
+                   pipeline: pipe2
+                   stage: build
+                   job: test
+               - exec: # indicates type of task
+                   command: date
+                   arguments:
+                    - "VERBOSE=true"
