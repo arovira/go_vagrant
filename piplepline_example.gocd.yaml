@@ -16,10 +16,12 @@ pipelines:
             job1: # name of the job
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
-                   command: date
+                   command: date        
+      - after_build: # name of stage
+          jobs:
             job2: # name of the job
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
-                    command: echo "Pipeline finished"           
-                   
+                    command: /usr/bin/echo "Task finished"           
+                                      
                    
