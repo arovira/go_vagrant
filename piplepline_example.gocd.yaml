@@ -2,6 +2,7 @@
 format_version: 3
 pipelines:
   test1: # definition of test1 pipeline
+    group: testgroup
     lock_behavior: none
     materials:
       mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
