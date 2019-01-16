@@ -17,3 +17,9 @@ pipelines:
               tasks: # ordered list of tasks to execute in job csharp
                - exec: # indicates type of task
                    command: date
+            job2: # name of the job
+              tasks: # ordered list of tasks to execute in job csharp
+               - exec: # indicates type of task
+                    command: echo "Pipeline finished"           
+                   
+                   
