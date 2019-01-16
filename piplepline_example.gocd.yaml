@@ -19,6 +19,8 @@ pipelines:
                    pipeline: pipe2
                    stage: build
                    job: test
+                   source: test-bin/
+                   destination: bin/
                - exec: # indicates type of task
                    command: date
                    arguments:
